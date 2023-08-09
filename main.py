@@ -27,6 +27,9 @@ while input1 != "":
 
 for i in inputs:
     print("Searching for " + i)
+    '''
+    Un-comment the following if you want to see the video open in your browser.
+
     try:
         urL=i
         chrome_path="C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
@@ -38,18 +41,16 @@ for i in inputs:
     except webbrowser.Error as e:
         print(e)
     time.sleep(1)
-
-    pyautogui.keyDown('ctrl')
-    for key in ['x', 'x']:
-        time.sleep(1)
-        pyautogui.press(key)
-    pyautogui.keyUp('ctrl')
-    
-    #Download(i)
+    '''
+    Download(i)
 
 #mcs = random.randint(5, 247)
-
 #mc = VideoFileClip("mc.mp4", audio=False).subclip(mcs, mcs+50)
-
 #mc.write_videofile("output.mp4")
+#clip1 = VideoFileClip("myvideo.mp4").margin(10)
+#clip1.set_position("center")
+
+combined=contatenate_videoclips([])
+
+
 
