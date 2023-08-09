@@ -17,8 +17,6 @@ def Download(link):
         print("An error has occurred")
     print("Download is completed successfully")
 
-
-
 inputs = [] 
 input1 = input("Enter the Youtube Short URL: ") 
 while input1 != "": 
@@ -44,13 +42,37 @@ for i in inputs:
     '''
     Download(i)
 
+
+vidNames=["vid1", "vid2", "vid3", "vid4", "vid5"]
+vidCount=0
+
+path=r'C://Users//inhor//Downloads//Python_Projects//auto-yt-shorts'
+for filename in os.listdir(path):
+    if not os.path.isfile(filename):
+        continue
+
+    basename, extension = os.path.splitext(filename)
+    if ',' not in basename:
+        continue # Ignore
+
+    target_name = f'{vidNames[vidCount]}{extension}'
+    os.rename(
+        os.path.join(TARGET_DIR, filename),
+        os.path.join(TARGET_DIR, target_name)
+    )
+    vidCount+=1
+
 #mcs = random.randint(5, 247)
 #mc = VideoFileClip("mc.mp4", audio=False).subclip(mcs, mcs+50)
 #mc.write_videofile("output.mp4")
 #clip1 = VideoFileClip("myvideo.mp4").margin(10)
 #clip1.set_position("center")
 
-combined=contatenate_videoclips([])
+Fvid1=VideoFileClip("vid1.mp4")
+Fvid2=VideoFileClip("vid2.mp4")
+Fvid3=VideoFileClip("vid3.mp4")
+Fvid4=VideoFileClip("vid4.mp4")
+Fvid5=VideoFileClip("vid5.mp4")
 
-
-
+combined=concatenate_videoclips([Fvid1, Fvid2, Fvid3, Fvid4, Fvid5])
+combined.write_videofile("output.mp4")
