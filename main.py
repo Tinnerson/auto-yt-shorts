@@ -43,24 +43,15 @@ for i in inputs:
     Download(i)
 
 
-vidNames=["vid1", "vid2", "vid3", "vid4", "vid5"]
-vidCount=0
+folder = "videos"
+for count, filename in enumerate(os.listdir(folder)):
+    dst = f"vid{str(count)}.mp4"
+    src =f"{folder}/{filename}"  # foldername/filename, if .py file is outside folder
+    dst =f"{folder}/{dst}"
 
-path=r'C://Users//inhor//Downloads//Python_Projects//auto-yt-shorts'
-for filename in os.listdir(path):
-    if not os.path.isfile(filename):
-        continue
+    os.rename(src, dst)
 
-    basename, extension = os.path.splitext(filename)
-    if ',' not in basename:
-        continue # Ignore
-
-    target_name = f'{vidNames[vidCount]}{extension}'
-    os.rename(
-        os.path.join(TARGET_DIR, filename),
-        os.path.join(TARGET_DIR, target_name)
-    )
-    vidCount+=1
+time.sleep(5)
 
 #mcs = random.randint(5, 247)
 #mc = VideoFileClip("mc.mp4", audio=False).subclip(mcs, mcs+50)
@@ -68,11 +59,11 @@ for filename in os.listdir(path):
 #clip1 = VideoFileClip("myvideo.mp4").margin(10)
 #clip1.set_position("center")
 
-Fvid1=VideoFileClip("vid1.mp4")
-Fvid2=VideoFileClip("vid2.mp4")
-Fvid3=VideoFileClip("vid3.mp4")
-Fvid4=VideoFileClip("vid4.mp4")
-Fvid5=VideoFileClip("vid5.mp4")
+Fvid1=VideoFileClip("videos\\vid0.mp4")
+Fvid2=VideoFileClip("videos\\vid1.mp4")
+Fvid3=VideoFileClip("videos\\vid2.mp4")
+Fvid4=VideoFileClip("videos\\vid3.mp4")
+Fvid5=VideoFileClip("videos\\vid4.mp4")
 
 combined=concatenate_videoclips([Fvid1, Fvid2, Fvid3, Fvid4, Fvid5])
 combined.write_videofile("output.mp4")
